@@ -1,2 +1,5 @@
 Mini:
 rosrun nuscenes2bag nuscenes2bag --dataroot /home/vamsi/Downloads/NuScRaw/v1.0-mini/ --out Mini /home/vamsi/NuSc/bags/ --jobs 4
+
+Normal (mkz Nuc):
+rosrun nuscenes2bag nuscenes2bag --dataroot /home/mkz/Downloads/v1.0-trainval02_blobs/  --version v2.0 --out blob02 /home/mkz/Downloads/nuscenes_bags/ --jobs 4
