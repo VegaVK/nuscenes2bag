@@ -5,6 +5,7 @@ import rosbag
 import json
 from sensor_msgs.msg import Imu
 from geometry_msgs.msg import Pose
+from geometry_msgs.msg import Twist
 from std_msgs.msg import Header
 import numpy as np
 f = open('/home/mkz/Downloads/can_bus/scene-0107_ms_imu.json',"r")
@@ -39,6 +40,7 @@ f = open('/home/mkz/Downloads/can_bus/scene-0107_pose.json',"r")
 poseData=json.load(f)
 f.close()
 poseMsg=Pose()
+VelMsg=Twist() # Temp Velocity
 tmpHdr=Header()
 for idx in range(0,len(poseData)):
     Utime=poseData[idx]["utime"]
@@ -53,7 +55,9 @@ for idx in range(0,len(poseData)):
     poseMsg.position.x=poseData[idx]["pos"][0]
     poseMsg.position.y=poseData[idx]["pos"][1]
     poseMsg.position.z=poseData[idx]["pos"][2]
+    VelMsg.linear.x=poseData[idx]["vel"][0]
 
     
     bagFile.write('/pose',poseMsg,tmpHdr.stamp)
+    bagFile.write('/vel',VelMsg,tmpHdr.stamp)
 bagFile.close()
