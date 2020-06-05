@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+#***Copied from: http://wiki.ros.org/rosbag/Cookbook***
 import sys
 import rosbag
 import time
